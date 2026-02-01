@@ -135,7 +135,7 @@ class ChatterboxTurboTTS(nn.Module):
         self.tokenizer = tokenizer
         # S3 speech tokenizer for reference audio tokenization
         self._s3tokenizer = s3tokenizer or S3TokenizerV2("speech_tokenizer_v2_25hz")
-        self.conds = conds
+        self._conds = conds  # Fixed: was self.conds but generate() checks self._conds
         self.local_path = local_path
 
     @property
